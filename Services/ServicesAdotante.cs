@@ -6,10 +6,12 @@ using System.Text;
 using System.Threading.Tasks;
 using Models;
 
+
 namespace Services
 {
     public class ServicesAdotante
     {
+
         static string conection = "Data Source = localhost; Initial Catalog = ONG_2; User Id = sa; Password = Tricolor2511;";
 
         SqlConnection conexaoDB = new SqlConnection(conection);

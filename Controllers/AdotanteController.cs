@@ -16,10 +16,10 @@ namespace Controllers
             return adotante;
         }
 
-        public void Alterar_dados_Adotante(string campo,string dado, string cpf)
+        public void Alterar_dados_Adotante(string campo, string dado, string cpf)
         {
             new ServicesAdotante().alterar_dados(campo, dado, cpf);
-            
+
         }
     }
 }

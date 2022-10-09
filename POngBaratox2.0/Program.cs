@@ -1,6 +1,6 @@
 ﻿using System;
-using Controllers;
-using Models;
+using POngBaratox2._0.Model;
+using POngBaratox2._0.Services;
 
 namespace POngBaratox2._0
 {
@@ -19,22 +19,37 @@ namespace POngBaratox2._0
 
             return new Animal(f, ra, sx, n);
         }
+        static Endereco Coleta_Dados_Endereco()
+        {
+
+            Console.Write("Informe o CEP: ");
+            string c = Console.ReadLine();
+            Console.Write("Informe o Estado: ");
+            string e = Console.ReadLine();
+            Console.Write("Informe o Cidade: ");
+            string cd = Console.ReadLine();
+            Console.Write("Informe o Bairro: ");
+            string b = Console.ReadLine();
+            Console.Write("Informe o Logradouro: ");
+            string l = Console.ReadLine();
+            Console.Write("Informe o Numero da residencia: ");
+            string n = Console.ReadLine();
+
+            return new Endereco(c, e, cd, b, l, n);
+        }
         static Adotante Coleta_Dados_adotante()
         {
             Console.Write("Informe o Nome: ");
             string n = Console.ReadLine();
             Console.Write("Informe o CPF: ");
             string cpf = Console.ReadLine();
-            Console.Write("Informe o Sexo: ");
-            string sx = Console.ReadLine();
             Console.Write("Informe a Data de Nascimento: ");
             DateTime dn = DateTime.Parse(Console.ReadLine());
             Console.Write("Informe um Telefone: ");
             string nm = Console.ReadLine();
-            EnderecoController end = new();
-            Endereco Endereco = end.Coleta_Dados_endereco();
-
-            return new Adotante(n, cpf, sx, dn, nm, Endereco);
+            Endereco endereco = new Endereco();
+            endereco = Coleta_Dados_Endereco();
+            return new Adotante(n, cpf, dn, nm, endereco);
         }
         static void Menu_inicial()
         {
@@ -95,14 +110,14 @@ namespace POngBaratox2._0
                 {
                     case 1:
                         Animal pet = Coleta_Dados_pet();
-                        new AnimalController().InserirAnimal(pet);
+                        new AnimalServices().inserirAnimal(pet);
 
                         Console.WriteLine("\t\t\t\t>>>>>>>> CADASTRO REALLIZADO COM SUCESSO! <<<<<<<<<<<<");
                         Console.ReadKey();
                         break;
                     case 2:
                         Adotante people = Coleta_Dados_adotante();
-                        new AdotanteController().InserirAdotante(people);
+                        new AdotanteService().InserirAdotante(people);
 
                         Console.WriteLine("\t\t\t\t>>>>>>>> CADASTRO REALLIZADO COM SUCESSO! <<<<<<<<<<<<");
                         Console.ReadKey();
@@ -112,7 +127,7 @@ namespace POngBaratox2._0
                         int id = int.Parse(Console.ReadLine());
                         Console.Write("Informe o CPF do Adotante: ");
                         string cpf = Console.ReadLine();
-                        new AnimalController().doarAnimal(cpf, id);
+                        new AnimalServices().doarAnimal(cpf,id);
 
                         Console.WriteLine("\t\t\t\t>>>>>>>>  ADOÇÃO REALLIZADA COM SUCESSO! <<<<<<<<<<<<");
                         Console.ReadKey();
@@ -133,7 +148,7 @@ namespace POngBaratox2._0
                                         Console.Write("Informe a Familia desejada: ");
                                         string ff = Console.ReadLine();
 
-                                        new AnimalController().alterar_dados_pet("Familia",ff,id);
+                                        new AnimalServices().alterar_dados_pet("Familia", ff, id);
                                         Console.WriteLine("\t\t\t\t>>>>>>>>  ALTERAÇÃO REALLIZADA COM SUCESSO! <<<<<<<<<<<<");
                                         Console.ReadKey();
                                         break;
@@ -143,7 +158,7 @@ namespace POngBaratox2._0
                                         Console.Write("Informe a Raça desejada: ");
                                         string rc = Console.ReadLine();
 
-                                        new AnimalController().alterar_dados_pet("Raca", rc, id);
+                                        new AnimalServices().alterar_dados_pet("Raca", rc, id);
                                         Console.WriteLine("\t\t\t\t>>>>>>>>  ALTERAÇÃO REALLIZADA COM SUCESSO! <<<<<<<<<<<<");
                                         Console.ReadKey();
                                         break;
@@ -155,7 +170,7 @@ namespace POngBaratox2._0
                                         string sex = Console.ReadLine();
 
 
-                                        new AnimalController().alterar_dados_pet("Sexo", sex, id);
+                                        new AnimalServices().alterar_dados_pet("Sexo", sex, id);
                                         Console.WriteLine("\t\t\t\t>>>>>>>>  ALTERAÇÃO REALLIZADA COM SUCESSO! <<<<<<<<<<<<");
                                         Console.ReadKey();
                                         break;
@@ -165,7 +180,7 @@ namespace POngBaratox2._0
                                         Console.Write("Informe a Nome desejado: ");
                                         string name = Console.ReadLine();
 
-                                        new AnimalController().alterar_dados_pet("Nome", name, id);
+                                        new AnimalServices().alterar_dados_pet("Nome", name, id);
                                         Console.WriteLine("\t\t\t\t>>>>>>>>  ALTERAÇÃO REALLIZADA COM SUCESSO! <<<<<<<<<<<<");
                                         Console.ReadKey();
                                         break;
@@ -182,7 +197,7 @@ namespace POngBaratox2._0
                                         Console.Write("Informe a Nome desejado: ");
                                         string name = Console.ReadLine();
 
-                                        new AdotanteController().Alterar_dados_Adotante("Nome",name,cpf1);
+                                        new AdotanteService().Alterar_dados_adotante("Nome", name, cpf1);
                                         Console.WriteLine("\t\t\t\t>>>>>>>>  ALTERAÇÃO REALLIZADA COM SUCESSO! <<<<<<<<<<<<");
                                         Console.ReadKey();
                                         break;
@@ -192,7 +207,7 @@ namespace POngBaratox2._0
                                         Console.Write("Informe a Data de Nascimento desejada: ");
                                         string data = Console.ReadLine();
 
-                                        new AdotanteController().Alterar_dados_Adotante("Data_Nascimento", data, cpf2);
+                                        new AdotanteService().Alterar_dados_adotante("Data_Nascimento", data, cpf2);
                                         Console.WriteLine("\t\t\t\t>>>>>>>>  ALTERAÇÃO REALLIZADA COM SUCESSO! <<<<<<<<<<<<");
                                         Console.ReadKey();
                                         break;
@@ -203,7 +218,7 @@ namespace POngBaratox2._0
                                         string num1 = Console.ReadLine();
 
 
-                                        new AdotanteController().Alterar_dados_Adotante("Telefone", num1, cpf3);
+                                        new AdotanteService().Alterar_dados_adotante("Telefone", num1, cpf3);
                                         Console.WriteLine("\t\t\t\t>>>>>>>>  ALTERAÇÃO REALLIZADA COM SUCESSO! <<<<<<<<<<<<");
                                         Console.ReadKey();
                                         break;
@@ -213,7 +228,7 @@ namespace POngBaratox2._0
                                         Console.Write("Informe o CEP desejado: ");
                                         string cep1 = Console.ReadLine();
 
-                                        new AdotanteController().Alterar_dados_Adotante("CPF", cep1, cpf4);
+                                        new AdotanteService().Alterar_dados_adotante("CPF", cep1, cpf4);
                                         Console.WriteLine("\t\t\t\t>>>>>>>>  ALTERAÇÃO REALLIZADA COM SUCESSO! <<<<<<<<<<<<");
                                         Console.ReadKey();
                                         break;
@@ -223,7 +238,7 @@ namespace POngBaratox2._0
                                         Console.Write("Informe a Rua desejado: ");
                                         string rua = Console.ReadLine();
 
-                                        new AdotanteController().Alterar_dados_Adotante("RUA", rua, cpf5);
+                                        new AdotanteService().Alterar_dados_adotante("RUA", rua, cpf5);
                                         Console.WriteLine("\t\t\t\t>>>>>>>>  ALTERAÇÃO REALLIZADA COM SUCESSO! <<<<<<<<<<<<");
                                         Console.ReadKey();
                                         break;
@@ -233,7 +248,7 @@ namespace POngBaratox2._0
                                         Console.Write("Informe a Cidade desejada: ");
                                         string cidade1 = Console.ReadLine();
 
-                                        new AdotanteController().Alterar_dados_Adotante("Cidade", cidade1, cpf6);
+                                        new AdotanteService().Alterar_dados_adotante("Cidade", cidade1, cpf6);
                                         Console.WriteLine("\t\t\t\t>>>>>>>>  ALTERAÇÃO REALLIZADA COM SUCESSO! <<<<<<<<<<<<");
                                         Console.ReadKey();
                                         break;
@@ -244,7 +259,7 @@ namespace POngBaratox2._0
                                         string bairro1 = Console.ReadLine();
 
 
-                                        new AdotanteController().Alterar_dados_Adotante("Bairro", bairro1, cpf7);
+                                        new AdotanteService().Alterar_dados_adotante("Bairro", bairro1, cpf7);
                                         Console.WriteLine("\t\t\t\t>>>>>>>>  ALTERAÇÃO REALLIZADA COM SUCESSO! <<<<<<<<<<<<");
                                         Console.ReadKey();
                                         break;
@@ -254,7 +269,7 @@ namespace POngBaratox2._0
                                         Console.Write("Informe o Estado desejado: ");
                                         string estado1 = Console.ReadLine();
 
-                                        new AdotanteController().Alterar_dados_Adotante("Estado", estado1, cpf8);
+                                        new AdotanteService().Alterar_dados_adotante("Estado", estado1, cpf8);
                                         Console.WriteLine("\t\t\t\t>>>>>>>>  ALTERAÇÃO REALLIZADA COM SUCESSO! <<<<<<<<<<<<");
                                         Console.ReadKey();
                                         break;
@@ -264,7 +279,7 @@ namespace POngBaratox2._0
                                         Console.Write("Informe o Numero da casa desejada: ");
                                         string casa1 = Console.ReadLine();
 
-                                        new AdotanteController().Alterar_dados_Adotante("Numero_Casa", casa1, cpf9);
+                                        new AdotanteService().Alterar_dados_adotante("Numero_Casa", casa1, cpf9);
                                         Console.WriteLine("\t\t\t\t>>>>>>>>  ALTERAÇÃO REALLIZADA COM SUCESSO! <<<<<<<<<<<<");
                                         Console.ReadKey();
                                         break;
