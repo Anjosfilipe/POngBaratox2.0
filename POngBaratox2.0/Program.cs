@@ -177,25 +177,98 @@ namespace POngBaratox2._0
                                 switch (opcP)
                                 {
                                     case 1:
+                                        Console.Write("Informe o CPF: ");
+                                        string cpf1 = Console.ReadLine();
+                                        Console.Write("Informe a Nome desejado: ");
+                                        string name = Console.ReadLine();
+
+                                        new AdotanteController().Alterar_dados_Adotante("Nome",name,cpf1);
+                                        Console.WriteLine("\t\t\t\t>>>>>>>>  ALTERAÇÃO REALLIZADA COM SUCESSO! <<<<<<<<<<<<");
+                                        Console.ReadKey();
                                         break;
                                     case 2:
+                                        Console.Write("Informe o CPF: ");
+                                        string cpf2 = Console.ReadLine();
+                                        Console.Write("Informe a Data de Nascimento desejada: ");
+                                        string data = Console.ReadLine();
+
+                                        new AdotanteController().Alterar_dados_Adotante("Data_Nascimento", data, cpf2);
+                                        Console.WriteLine("\t\t\t\t>>>>>>>>  ALTERAÇÃO REALLIZADA COM SUCESSO! <<<<<<<<<<<<");
+                                        Console.ReadKey();
                                         break;
                                     case 3:
+                                        Console.Write("Informe o CPF: ");
+                                        string cpf3 = Console.ReadLine();
+                                        Console.Write("Informe o Numero desejado: ");
+                                        string num1 = Console.ReadLine();
+
+
+                                        new AdotanteController().Alterar_dados_Adotante("Telefone", num1, cpf3);
+                                        Console.WriteLine("\t\t\t\t>>>>>>>>  ALTERAÇÃO REALLIZADA COM SUCESSO! <<<<<<<<<<<<");
+                                        Console.ReadKey();
                                         break;
                                     case 4:
+                                        Console.Write("Informe o CPF: ");
+                                        string cpf4 = Console.ReadLine();
+                                        Console.Write("Informe o CEP desejado: ");
+                                        string cep1 = Console.ReadLine();
+
+                                        new AdotanteController().Alterar_dados_Adotante("CPF", cep1, cpf4);
+                                        Console.WriteLine("\t\t\t\t>>>>>>>>  ALTERAÇÃO REALLIZADA COM SUCESSO! <<<<<<<<<<<<");
+                                        Console.ReadKey();
                                         break;
                                     case 5:
+                                        Console.Write("Informe o CPF: ");
+                                        string cpf5 = Console.ReadLine();
+                                        Console.Write("Informe a Rua desejado: ");
+                                        string rua = Console.ReadLine();
+
+                                        new AdotanteController().Alterar_dados_Adotante("RUA", rua, cpf5);
+                                        Console.WriteLine("\t\t\t\t>>>>>>>>  ALTERAÇÃO REALLIZADA COM SUCESSO! <<<<<<<<<<<<");
+                                        Console.ReadKey();
                                         break;
                                     case 6:
+                                        Console.Write("Informe o CPF: ");
+                                        string cpf6 = Console.ReadLine();
+                                        Console.Write("Informe a Cidade desejada: ");
+                                        string cidade1 = Console.ReadLine();
+
+                                        new AdotanteController().Alterar_dados_Adotante("Cidade", cidade1, cpf6);
+                                        Console.WriteLine("\t\t\t\t>>>>>>>>  ALTERAÇÃO REALLIZADA COM SUCESSO! <<<<<<<<<<<<");
+                                        Console.ReadKey();
                                         break;
                                     case 7:
+                                        Console.Write("Informe o CPF: ");
+                                        string cpf7 = Console.ReadLine();
+                                        Console.Write("Informe o Bairro desejada: ");
+                                        string bairro1 = Console.ReadLine();
+
+
+                                        new AdotanteController().Alterar_dados_Adotante("Bairro", bairro1, cpf7);
+                                        Console.WriteLine("\t\t\t\t>>>>>>>>  ALTERAÇÃO REALLIZADA COM SUCESSO! <<<<<<<<<<<<");
+                                        Console.ReadKey();
                                         break;
                                     case 8:
+                                        Console.Write("Informe o CPF: ");
+                                        string cpf8 = Console.ReadLine();
+                                        Console.Write("Informe o Estado desejado: ");
+                                        string estado1 = Console.ReadLine();
+
+                                        new AdotanteController().Alterar_dados_Adotante("Estado", estado1, cpf8);
+                                        Console.WriteLine("\t\t\t\t>>>>>>>>  ALTERAÇÃO REALLIZADA COM SUCESSO! <<<<<<<<<<<<");
+                                        Console.ReadKey();
                                         break;
                                     case 9:
+                                        Console.Write("Informe o CPF: ");
+                                        string cpf9 = Console.ReadLine();
+                                        Console.Write("Informe o Numero da casa desejada: ");
+                                        string casa1 = Console.ReadLine();
+
+                                        new AdotanteController().Alterar_dados_Adotante("Numero_Casa", casa1, cpf9);
+                                        Console.WriteLine("\t\t\t\t>>>>>>>>  ALTERAÇÃO REALLIZADA COM SUCESSO! <<<<<<<<<<<<");
+                                        Console.ReadKey();
                                         break;
                                 }
-
                                 break;
                         }
                         break;

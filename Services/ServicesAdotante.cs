@@ -27,5 +27,17 @@ namespace Services
             conexaoDB.Close();
             return people;
         }
+
+        public void alterar_dados(string campo, string dado, string cpf)
+        {
+            conexaoDB.Open();
+
+            SqlCommand datainsert = new();
+            datainsert.CommandText = $"UPDATE Adotante SET {campo} = '{dado}' WHERE CPF = '{cpf}'; ";
+
+            datainsert.Connection = conexaoDB;
+            datainsert.ExecuteNonQuery();
+            conexaoDB.Close();
+        }
     }
 }
